@@ -1,18 +1,18 @@
-import express, { type Request, type Response } from "express"
+import express, { type Application, type Request, type Response } from "express"
 import mongoose from "mongoose"
 import cors from "cors"
 import dotenv from "dotenv"
 import { WebSocketServer } from "ws"
 import http from "http"
-import authRoutes from "./routes/auth.tsx"
-import eventRoutes from "./routes/events.tsx"
-import swapRoutes from "./routes/swaps.tsx"
+import authRoutes from "./routes/auth"
+import eventRoutes from "./routes/events"
+import swapRoutes from "./routes/swaps"
 import jwt from "jsonwebtoken"
-import { verifyToken } from "./middleware/auth.tsx"
+import { verifyToken } from "./middleware/auth"
 
 dotenv.config()
 
-const app = express()
+const app: Application = express() // <-- explicit type annotation
 const PORT = process.env.PORT || 5000
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/slot-swapper"
 
@@ -53,7 +53,6 @@ wss.on("connection", (ws, req) => {
   const userId = query.get("userId")
   const token = query.get("token")
 
-  // Verify token before accepting connection
   if (!token || !userId) {
     ws.close()
     return

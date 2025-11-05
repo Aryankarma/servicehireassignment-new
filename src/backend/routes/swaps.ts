@@ -1,13 +1,13 @@
-import express, { type Request, type Response } from "express"
+import express, { Router, type Request, type Response } from "express"
 import Event from "../models/Event.tsx"
 import SwapRequest from "../models/SwapRequest.tsx"
-import { notifyUser } from "../server.tsx"
+import { notifyUser } from "../server.ts"
 
 interface AuthRequest extends Request {
   userId?: string
 }
 
-const router = express.Router()
+const router: Router = express.Router()
 
 // Get swappable slots from other users
 router.get("/swappable-slots", async (req: AuthRequest, res: Response) => {

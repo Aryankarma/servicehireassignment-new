@@ -1,11 +1,11 @@
-import express, { type Request, type Response } from "express"
+import express, { Router, type Request, type Response } from "express"
 import Event from "../models/Event.tsx"
 
 interface AuthRequest extends Request {
   userId?: string
 }
 
-const router = express.Router()
+const router: Router = express.Router()
 
 // Get all events for logged-in user
 router.get("/", async (req: AuthRequest, res: Response) => {

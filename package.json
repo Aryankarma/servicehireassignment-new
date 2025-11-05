@@ -8,7 +8,7 @@
     "build:backend": "tsc",
     "build:frontend": "vite build",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
-    "dev:backend": "tsx watch src/backend/server.tsx",
+    "dev:backend": "tsx watch src/backend/server.ts",
     "dev:frontend": "vite",
     "preview": "vite preview",
     "start": "node dist/backend/server.js"

@@ -1,8 +1,8 @@
-import express, { type Request, type Response } from "express"
+import express, { type Router, type Request, type Response } from "express"
 import jwt from "jsonwebtoken"
 import User from "../models/User.tsx"
 
-const router = express.Router()
+const router: Router = express.Router()
 
 // Sign Up
 router.post("/signup", async (req: Request, res: Response) => {
